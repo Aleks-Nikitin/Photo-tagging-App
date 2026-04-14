@@ -7,6 +7,7 @@ import char2 from "./assets/Character2.png"
 import Popup from "./components/Popup";
 
 export type Character ={
+    id:number,
     name:string,
     img:string,
 }
@@ -19,14 +20,19 @@ function App() {
 
   const charArr=[
     {
+      id:1,
       name:"Bob",
       img:char1
     },
   {
+    id:2,
     name:"Tom",
     img:char2
   }
   ]
+  // async function validateCoords(){
+  //   const result = await fetch.
+  // }
   function togglePopup(){
     setOnTarget((e)=> !e);
   }
@@ -37,7 +43,9 @@ function App() {
     setYcord(event.pageY);
     
   }
-
+  // async function handleCharClick(){
+  //   const result = await fetch("http://localhost:3000");
+  // }
   return (
     <div className="content">
      {onTarget && (<Popup chars={charArr} coords={{x:xCord,y:yCord}} ></Popup>)} 
