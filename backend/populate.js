@@ -4,14 +4,14 @@ async function main() {
   const char1 = await prisma.character.create({
     data: {
       xCoord: (127/2356),
-      yCoord: (318/1270),
+      yCoord: (0.0776699),
     },
   });
   console.log("Created char:", char1);
     const char2 = await prisma.character.create({
     data: {
       xCoord: (2127/2356),
-      yCoord: (917/1270),
+      yCoord: (690/1381),
     },
   });
   console.log("Created char:", char2);

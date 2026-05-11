@@ -15,14 +15,15 @@ const validateCoordsChar=[
         })
         console.log(`screen x${screenX}`);
         console.log(`value of current x${value}`);
-        console.log(`value of coordinate${dbX.xCoord}`);
-        const res= ((((Number(value)/Number(screenX))/ dbX.xCoord) < 1.3) && (((Number(value)/Number(screenX))/ dbX.xCoord) >0.7));
+        console.log(`value of coordinate database X${dbX.xCoord}`);
+        console.log(`current calculated value of X coords${((Number(value)/Number(screenX))/ dbX.xCoord)}`)
+        const res= ((((Number(value)/Number(screenX))/ dbX.xCoord) < 1.06) && (((Number(value)/Number(screenX))/ dbX.xCoord) >0.95));
           if (!res) {
         throw new Error(`Wrong X coordinate`);
       }
         return res;
 
-    }).withMessage("wrong guy"),
+    }).withMessage("wrong guy X"),
     body("ycoord").trim().exists()
     .custom(async (value,{req})=>{
         const screenY=req.body.screenY;
@@ -31,13 +32,19 @@ const validateCoordsChar=[
                 id:Number(req.params.id)
             }
         })
-        const res= ((Number(value)/Number(screenY))/dbY.yCoord <1.3) && ((Number(value)/Number(screenY))/dbY.yCoord>0.7);
+        console.log(`screen y${screenY}`);
+        console.log(`value of current y${value}`);
+      //  console.log(`value of coordinate database Y${dbY.yCoord}`);
+        let supposedY =0.0776699;
+        console.log(`val/screen Y: ${(Number(value)/Number(screenY))}`);
+        console.log(`y current supposed calculated val: ${((Number(value)/Number(screenY))/ dbY.yCoord)}`)
+        const res= ((((Number(value)/Number(screenY))/ dbY.yCoord) < 1.06) && (((Number(value)/Number(screenY))/ dbY.yCoord) >0.95));
          if (!res) {
         throw new Error(`Wrong Y coordinate`);
       }
         return res;
 
-    }).withMessage("wrong guy")
+    }).withMessage("wrong guy Y")
 
 
 ]
