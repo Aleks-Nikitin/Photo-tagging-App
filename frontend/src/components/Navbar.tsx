@@ -1,9 +1,6 @@
 import StopWatch from "./Stopwatch";
-import { useState,useEffect} from "react";
-import type { Character } from "../App";
-// type NavbarProps={
-//     chars:Character[];
-// }
+// import { useState,useEffect} from "react";
+// import type { Character } from "../App";
 
 function Navbar({chars,isActive,setIsActive,isPaused,setIsPaused,time,setTime}){
 

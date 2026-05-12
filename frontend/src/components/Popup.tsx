@@ -64,8 +64,6 @@ function Popup({coords,yOffest,imgHeight}:PopupProps){
             <div className="box absolute flex gap-2 bg-purple-400 p-1.5  hover:cursor-pointer" ref={nodeRef}>
                 {characters.map((char)=>(
                      <form onSubmit={e=>onSubmit(e,char.id)} key={char.id}>
-                        {/* <input type="hidden" name="screenX" value={ from props of a popup}/>
-                        <input type="hidden" name="screenY" value={ from props of a popup}/> */}
                          <button type="submit" >
                              <div className="cube border-2 border-black opacity-80 hover:opacity-100">
                                  <h3 className="text-white">{char.name}</h3>

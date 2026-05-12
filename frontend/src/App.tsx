@@ -5,7 +5,6 @@ import Navbar from './components/Navbar'
 import waldo from "./assets/waldo.jpg"
 import char1 from "./assets/Character1.png"
 import char2 from "./assets/Character2.png"
-//import Draggable from 'react-draggable';
 import Popup from "./components/Popup";
 
 export type Character ={
@@ -60,16 +59,10 @@ function App() {
         }
         
     },[found1,found2])
-  //const nodeRef=useRef(null);
 
-
-  // async function validateCoords(){
-  //   const result = await fetch.
-  // }
   function togglePopup(){
     setOnTarget((e)=> !e);
   }
-  //const mouse =useRef(document);
   function handleClick(event:any){
     togglePopup();
     setXcord(event.pageX);
@@ -78,9 +71,6 @@ function App() {
     setYImgClient(img.current.clientHeight);
     
   }
-  // async function handleCharClick(){
-  //   const result = await fetch("http://localhost:3000");
-  // }
   return (
     <ContextCoords.Provider value={[contextCoords,contextCoords2,setContextCoords,setContextCoords2,found1,setFound1,found2,setFound2,characters,setCharacters]}>
     <div className="content">
@@ -107,7 +97,6 @@ function App() {
          <div className="coordinates flex justify-center gap-7">
             <h3>{xCord}</h3>
             <h3>{yCord}</h3>
-            <h3>{yImgClient}</h3>
           </div>
       
 </div>
