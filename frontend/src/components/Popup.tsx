@@ -4,7 +4,6 @@ import { useRef, useState, useContext} from "react";
 import type { Character } from "../App"
 type Coordinate = number;
 type PopupProps = {
-    chars:Character[],
     coords:Coordinate[],
     yOffset:number,
     imgHeight:number,
@@ -12,10 +11,11 @@ type PopupProps = {
 function toUrlEncoded(body) {
   return new URLSearchParams(body).toString()
 }
-function Popup({chars,coords,yOffest,imgHeight}:PopupProps){ 
-      const [contextCoords,contextCoords2,setContextCoords,setContextCoords2,found1,setFound1,found2,setFound2]=useContext(ContextCoords);
+function Popup({coords,yOffest,imgHeight}:PopupProps){ 
+      const [contextCoords,contextCoords2,setContextCoords,setContextCoords2,found1,setFound1,found2,setFound2,characters,setCharacters]=useContext(ContextCoords);
     const nodeRef=useRef(null);
-    
+  
+
     async function onSubmit(e:any,id:number){
         e.preventDefault();
         try {
@@ -31,9 +31,11 @@ function Popup({chars,coords,yOffest,imgHeight}:PopupProps){
                 throw new Error(data?.msg ?? 'markdown failed')
             }
             if(id==1){ 
+                setCharacters(characters.filter(char=> char.id !=1));
                 setFound1(false);
                 setContextCoords([coords.x,coords.y]);
             }else{
+                setCharacters(characters.filter(char=> char.id !=2));
                 setFound2(false);
                 setContextCoords2([coords.x,coords.y]);
             }
@@ -60,7 +62,7 @@ function Popup({chars,coords,yOffest,imgHeight}:PopupProps){
           </Draggable>
         <Draggable nodeRef={nodeRef} disabled={true} position={{x:coords.x+30,y:coords.y-30}}>
             <div className="box absolute flex gap-2 bg-purple-400 p-1.5  hover:cursor-pointer" ref={nodeRef}>
-                {chars.map((char)=>(
+                {characters.map((char)=>(
                      <form onSubmit={e=>onSubmit(e,char.id)} key={char.id}>
                         {/* <input type="hidden" name="screenX" value={ from props of a popup}/>
                         <input type="hidden" name="screenY" value={ from props of a popup}/> */}
